@@ -76,6 +76,38 @@ header .description {
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-bottom: 1px solid #f9f4da;
+}
+
+.keyboard {
+  max-width: 350px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  gap: 5px;
+}
+
+button {
+  border: 1px solid #d7d7d7;
+  cursor: pointer;
+  font-family: "Hanken Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.keyboard button {
+  background-color: #dd9b1b;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+}
+
+.new-game {
+  font-size: 1.125rem;
+  background-color: #0e8cb6;
+  display: block;
+  margin-inline: auto;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+  padding: 10px 50px;
+  margin-top: 30px;
 }
