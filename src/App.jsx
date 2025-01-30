@@ -6,13 +6,18 @@ export default function AssemblyEndgame() {
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const wrongGuessArray = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  );
+  const wrongGuessCount = wrongGuessArray.length;
+
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
   function guessedLetterHandler(letter) {
     setGuessedLetters((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
     );
   }
-
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const languageElements = languages.map((language) => {
     return (
