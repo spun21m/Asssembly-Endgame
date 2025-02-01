@@ -14,7 +14,7 @@ export default function AssemblyEndgame() {
     .split("")
     .every((letter) => guessedLetters.includes(letter));
   const isGameLost = wrongGuessCount >= languages.length - 1;
-  const isGameOver = isGameWon || isGameLost
+  const isGameOver = isGameWon || isGameLost;
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -66,6 +66,11 @@ export default function AssemblyEndgame() {
     );
   });
 
+  const gameStatusClassName = clsx("game-status", {
+    won: isGameWon,
+    lost: isGameLost,
+  });
+
   return (
     <main>
       <header>
@@ -75,9 +80,20 @@ export default function AssemblyEndgame() {
           from Assembly!
         </p>
       </header>
-      <section className="game-status">
-        <h2>You win!</h2>
-        <p>Well done! 🎉</p>
+      <section className={gameStatusClassName}>
+        {isGameOver ? (
+          isGameWon ? (
+            <>
+              <h2>You win!</h2>
+              <p>Well done! 🎉</p>
+            </>
+          ) : (
+            <>
+              <h2>Game Over!</h2>
+              <p>You lose! Better start learning Assembly 😔</p>
+            </>
+          )
+        ) : null}
       </section>
       <section className="language-chips">{languageElements}</section>
       <section className="word-display">{letterElements}</section>

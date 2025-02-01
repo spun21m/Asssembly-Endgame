@@ -32,11 +32,18 @@ header .description {
 }
 
 .game-status {
-  background-color: #0ea051;
   margin-block: 30px;
   text-align: center;
   border-radius: 4px;
   padding: 8px;
+  min-height: 60px;
+}
+.game-status.won {
+  background-color: #0ea051;
+}
+
+.game-status.lost {
+  background-color: #b22528;
 }
 
 .game-status h2 {
