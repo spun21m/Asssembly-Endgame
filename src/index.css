@@ -55,6 +55,16 @@ header .description {
   margin-top: 3px;
 }
 
+.game-status.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-weight: 400;
+}
+
 .language-chips {
   max-width: 350px;
   display: flex;
@@ -102,6 +112,10 @@ header .description {
   border-bottom: 1px solid #f9f4da;
 }
 
+.word-display span.missed-letter {
+  color: #ec5d49;
+}
+
 .keyboard {
   max-width: 350px;
   display: flex;
@@ -122,6 +136,11 @@ button {
   width: 30px;
   height: 30px;
   border-radius: 3px;
+}
+
+.keyboard button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .new-game {
