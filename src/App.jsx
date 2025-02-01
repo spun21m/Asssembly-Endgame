@@ -2,6 +2,7 @@ import { useState } from "react";
 import { languages } from "../languages";
 import { getFarewellText, getRandomWord } from "../utils";
 import clsx from "clsx";
+import Confetti from "react-confetti";
 
 export default function AssemblyEndgame() {
   // state values
@@ -16,6 +17,7 @@ export default function AssemblyEndgame() {
   const isGameWon = currentWord
     .split("")
     .every((letter) => guessedLetters.includes(letter));
+
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
@@ -115,6 +117,7 @@ export default function AssemblyEndgame() {
 
   return (
     <main>
+      {isGameWon && <Confetti recycle={false} numberOfPieces={1000} />}
       <header>
         <h1>Assembly: Endgame</h1>
         <p className="description">
