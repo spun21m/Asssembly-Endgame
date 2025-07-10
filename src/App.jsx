@@ -3,6 +3,7 @@ import { languages } from "../languages";
 import { getFarewellText, getRandomWord } from "../utils";
 import clsx from "clsx";
 import Confetti from "react-confetti";
+import "./index.css";
 
 export default function AssemblyEndgame() {
   // state values
@@ -119,43 +120,58 @@ export default function AssemblyEndgame() {
   }
 
   return (
-    <main>
-      {isGameWon && <Confetti recycle={false} numberOfPieces={1000} width={window.innerWidth}/>}
-      <header>
-        <h1>Assembly: Endgame</h1>
-        <p className="description">
-          Guess the word in under 8 attempts to keep the programming world safe
-          from Assembly!
-        </p>
-      </header>
-      <section aria-live="polite" role="status" className={gameStatusClassName}>
-        {renderGameStatus()}
-      </section>
-      <section className="language-chips">{languageElements}</section>
-      <section className="word-display">{letterElements}</section>
-      {/* Combined visually-hidden aria-live region for status updates */}
-      <section aria-live="polite" role="status" className="sr-only">
-        <p>
-          {currentWord.includes(lastGuessedLetter)
-            ? `Correct! The letter ${lastGuessedLetter} is in the word.`
-            : `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
-          You have {numGuessLeft} attempts left.
-        </p>
-        <p>
-          Current word:{" "}
-          {currentWord
-            .split("")
-            .map((letter) =>
-              guessedLetters.includes(letter) ? letter + "." : "blank."
-            )}
-        </p>
-      </section>
-      <section className="keyboard">{keyboardElements}</section>
-      {isGameOver && (
-        <button className="new-game" onClick={resetGame}>
-          New Game
-        </button>
-      )}
-    </main>
+    <>
+      <main>
+        {isGameWon && (
+          <Confetti
+            recycle={false}
+            numberOfPieces={1000}
+            width={window.innerWidth}
+          />
+        )}
+        <header>
+          <h1>Assembly: Endgame</h1>
+          <p className="description">
+            Guess the word in under 8 attempts to keep the programming world
+            safe from Assembly!
+          </p>
+        </header>
+        <section
+          aria-live="polite"
+          role="status"
+          className={gameStatusClassName}
+        >
+          {renderGameStatus()}
+        </section>
+        <section className="language-chips">{languageElements}</section>
+        <section className="word-display">{letterElements}</section>
+        {/* Combined visually-hidden aria-live region for status updates */}
+        <section aria-live="polite" role="status" className="sr-only">
+          <p>
+            {currentWord.includes(lastGuessedLetter)
+              ? `Correct! The letter ${lastGuessedLetter} is in the word.`
+              : `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
+            You have {numGuessLeft} attempts left.
+          </p>
+          <p>
+            Current word:{" "}
+            {currentWord
+              .split("")
+              .map((letter) =>
+                guessedLetters.includes(letter) ? letter + "." : "blank."
+              )}
+          </p>
+        </section>
+        <section className="keyboard">{keyboardElements}</section>
+        {isGameOver && (
+          <button className="new-game" onClick={resetGame}>
+            New Game
+          </button>
+        )}
+      </main>
+      <footer>
+        <p>Made with ❤️ by Sital Pun, part of freeCodeCamp project</p>
+      </footer>
+    </>
   );
 }
